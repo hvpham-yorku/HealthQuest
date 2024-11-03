@@ -40,7 +40,16 @@ a system to track calories and nutrition.
 Since the app has a video-game feel to it with level progressions, exp and character development, this app will likely
 attract users who enjoy playing video games as a hobby.
 
-> *Include information about personas from persona.md here.*
+This is highlighted by our personas (found in [personas]()).  Users like Jack Dundy, a person who plays video games 
+as a hobby and spends a lot of time on devices is the perfect example.  The level and character system we plan to 
+incorporate is a feature gamers like Jack are familiar with and enjoy. 
+
+Other personas highlight our more general audience.  Since the character creation process has many optional features
+(name and age are the only metrics required to get started), people like Jimmy, Brian and others will most likely skip
+the detailed creation process, and are still able to make full use of the app's health and tracking features.
+
+With this flexibility, we are able to target a wide audience of general users, while also attracting a specific group of
+users, who statistically struggle with with their heath and would benefit from a health tracker such as HealthQuest.
 
 ### What makes our product different?
 
