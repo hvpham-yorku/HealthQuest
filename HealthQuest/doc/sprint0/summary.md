@@ -28,7 +28,7 @@ actively trying to gain experience points to "level up".
 
 ### Key Personas
 
-Based on the multiple different [personas]() listed in the PDF, some of the key personas we 
+Based on the multiple different [personas](personas.pdf) listed in the PDF, some of the key personas we 
 identified are Jack and Hannah.  
 
 Jack is a young man who enjoys video games and is looking to get healthier.  HealthQuest 
@@ -46,7 +46,10 @@ fast since she plans to hit her goals often for the sake of soccer practices.
 
 ## Use Cases
 
-> *TODO: Create UML Use Case Diagram.*
+We have designed a simple Use Case diagram to illustrate how the users, backend, frontend and
+database system actors interact with the HealthQuest app system.  (Subject to change).
+
+![Use Case Diagram, HealthQuest Application](HealthQuest_sprint0_use_case_diagram.png)
 
 ### Use Scenarios
 
