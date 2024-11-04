@@ -80,13 +80,12 @@ The backend is the controller and logic layer that processes user requests and i
    Organize the `backend` code into folders for models, routes, and controllers:
 
 ```
-backend/
-├── models/            # MongoDB schemas
-│   └── Data.js        # Example model for storing data
-├── routes/            # API routes
-│   └── dataRoutes.js  # Example route file
-├── controllers/       # Request handling logic
-│   └── dataController.js
+health-quest-backend/
+├── src/
+│   ├── models/         # MongoDB schemas (e.g., User.js, Data.js)
+│   ├── routes/         # API routes (e.g., dataRoutes.js)
+│   ├── controllers/    # Request handling logic (e.g., dataController.js)
+│   └── config/         # Environment configurations
 └── .env               # Environment variables (e.g., database URL)
 ```
 
