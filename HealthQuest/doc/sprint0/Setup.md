@@ -18,14 +18,20 @@ The frontend is the view layer of our application, where users interact with the
    This will create a folder named `health-quest-frontend` with the necessary files and directories for a basic React app.
 
 2. **Set Up Folder Structure**  
-   Inside the `src` folder of `health-quest-frontend`, create additional directories to organize components, pages, and services:
+In the `frontend/src` folder, restructure it to separate reusable components, main pages, and service functions as outlined:
 
-   ```
-   src/
-   ├── components/         # Reusable components (e.g., forms, buttons)
-   ├── pages/              # Main application pages
-   └── services/           # Functions for API calls
-   ```
+```
+frontend/
+└── src/
+    ├── components/         # For reusable components (e.g., forms, buttons)
+    │   └── Header.js
+    ├── pages/              # For main application pages
+    │   ├── Dashboard.js
+    │   ├── UserProfile.js
+    │   └── HealthStats.js
+    └── services/           # For API call functions
+        └── userService.js
+```
 
 3. **Install Dependencies**  
    Install `axios` for making HTTP requests (read more on [HTTP requests with Axios](https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/#:~:text=Making%20an%20HTTP%20request%20is,post()%20.)):
@@ -71,15 +77,18 @@ The backend is the controller and logic layer that processes user requests and i
    ```
 
 3. **Set Up Folder Structure**  
-   Organize the backend code into folders for models, routes, and controllers:
+   Organize the `backend` code into folders for models, routes, and controllers:
 
-   ```
-   health-quest-backend/
-   ├── models/         # MongoDB schemas
-   ├── routes/         # API routes
-   ├── controllers/    # Request handling logic
-   └── .env            # Environment variables (e.g., database URL)
-   ```
+```
+backend/
+├── models/            # MongoDB schemas
+│   └── Data.js        # Example model for storing data
+├── routes/            # API routes
+│   └── dataRoutes.js  # Example route file
+├── controllers/       # Request handling logic
+│   └── dataController.js
+└── .env               # Environment variables (e.g., database URL)
+```
 
 4. **Create a Basic Server in server.js**  
    In the `health-quest-backend` folder, create `server.js` to define the server’s structure.
