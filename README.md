@@ -2,10 +2,6 @@
 
 ---
 
-**HealthQuest** is a user-friendly, motivational platform designed to help individuals track their daily intake of calories, nutrients, and fluids. By providing real-time insights and progress tracking, HealthQuest empowers users to stay informed about their health and encourages them to achieve their wellness goals.
-
----
-
 ## Motivation
 
 The motivation for our product is to provide users with awareness of the amount of calories, protein, macros, micros, vitamins, fiber, sugar, etc., they intake with each item they consume. We aim to motivate users to better their health, as health should be the top priority in one’s life. Poor health can lead to various diseases and heart issues, and our app seeks to combat that.
