@@ -26,7 +26,7 @@ your total Level, which describes how adept you are at meeting these challenges.
 progression system, found in many other games is a great way to keep people motivated and
 actively trying to gain experience points to "level up".
 
-### Key Personas
+## Key Personas
 
 Based on the multiple different [personas](personas.pdf) listed in the PDF, some of the key personas we 
 identified are Jack and Hannah.  
@@ -51,7 +51,7 @@ database system actors interact with the HealthQuest app system.  (Subject to ch
 
 ![Use Case Diagram, HealthQuest Application](HealthQuest_sprint0_use_case_diagram.png)
 
-### Use Scenarios
+## Use Scenarios
 
 Let's go over a few key scenarios the app is planned to be used for.
 
