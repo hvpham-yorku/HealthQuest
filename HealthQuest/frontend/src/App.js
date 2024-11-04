@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import UserProfile from './components/UserProfile';
-import HealthStats from './components/HealthStats';
+import Dashboard from './pages/Dashboard';
+import UserProfile from './pages/UserProfile';
+import HealthStats from './pages/HealthStats';
 import { getUsers } from './services/userService';
 
 function App() {
