@@ -8,7 +8,7 @@ import HealthStats from './pages/HealthStats';
 import { getUsers } from './services/userService';
 
 function App() {
-    const [users, setUsers] = useState([]);
+    const [, setUsers] = useState([]); // Replace `const [users, setUsers]` with `const [, setUsers]` if `users` is unused
 
     useEffect(() => {
         async function fetchData() {
@@ -20,7 +20,7 @@ function App() {
             }
         }
         fetchData();
-    }, [setUsers]);
+    }, []);
 
     return (
         <Router>
