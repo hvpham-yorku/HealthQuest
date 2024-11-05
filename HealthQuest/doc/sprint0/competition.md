@@ -26,7 +26,7 @@ a system to track calories and nutrition.
 Since the app has a video-game feel to it with level progressions, exp and character development, this app will likely
 attract users who enjoy playing video games as a hobby.
 
-This is highlighted by our personas (found in [personas]()).  Users like Jack Dundy, a person who plays video games 
+This is highlighted by our personas (found in [personas](Personas.pdf)).  Users like Jack Dundy, a person who plays video games 
 as a hobby and spends a lot of time on devices is the perfect example.  The level and character system we plan to 
 incorporate is a feature gamers like Jack are familiar with and enjoy. 
 

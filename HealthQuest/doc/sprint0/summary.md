@@ -28,7 +28,7 @@ actively trying to gain experience points to "level up".
 
 ## Key Personas
 
-Based on the multiple different [personas](personas.pdf) listed in the PDF, some of the key personas we 
+Based on the multiple different [personas](Personas.pdf) listed in the PDF, some of the key personas we 
 identified are Jack and Hannah.  
 
 Jack is a young man who enjoys video games and is looking to get healthier.  HealthQuest 
