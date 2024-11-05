@@ -8,7 +8,7 @@ import HealthStats from './pages/HealthStats';
 import { getUsers } from './services/userService';
 
 function App() {
-    const [setUsers] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -20,7 +20,7 @@ function App() {
             }
         }
         fetchData();
-    }, []);
+    }, [setUsers]);
 
     return (
         <Router>
