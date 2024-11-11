@@ -1,15 +1,41 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
-
-const getUsers = async () => {
-    try {
-        const response = await axios.get(`${API_URL}/users`);
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching users:", error);
-        throw error;
-    }
+export const getUsers = async () => {
+    const response = await axios.get('/api/users');
+    return response.data;
 };
 
-module.exports = { getUsers };
+export const addMeal = async (meal) => {
+    const token = localStorage.getItem('token');
+    const response = await axios.post(
+        'http://localhost:5000/api/meals',
+        meal,
+        {
+            headers: { Authorization: `Bearer ${token}` },
+        }
+    );
+    return response.data;
+};
+
+export const getMeals = async () => {
+    const token = localStorage.getItem('token');
+    const response = await axios.get(
+        'http://localhost:5000/api/meals',
+        {
+            headers: { Authorization: `Bearer ${token}` },
+        }
+    );
+    return response.data;
+};
+
+export const loginUser = async (email, password) => {
+    try {
+        const response = await axios.post(
+            'http://localhost:5000/api/users/login',
+            { email, password }
+        );
+        return response.data; // Expects token and user object in response
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Failed to login');
+    }
+};

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { getUsers } from '../services/userService';
+import { addMeal } from '../services/userService';
+import axios from 'axios';
 
 function Dashboard() {
-    const [users, setUsers] = useState([]);
+    const [loggedInUser, setLoggedInUser] = useState(null);
     const [calories, setCalories] = useState(0);
     const [water, setWater] = useState(0);
     const [meals, setMeals] = useState([]);
@@ -10,8 +11,8 @@ function Dashboard() {
         name: '',
         calories: '',
         protein: '',
-        carbs: '',
-        fats: ''
+        carbohydrates: '',
+        fats: '',
     });
 
     const [level, setLevel] = useState(1);
@@ -19,42 +20,104 @@ function Dashboard() {
     const [xpForNextLevel, setXpForNextLevel] = useState(20);
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const userData = await getUsers();
-                setUsers(userData);
-            } catch (error) {
-                console.error("Error fetching users:", error);
-            }
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            setLoggedInUser(user);
+            fetchProgress(user.id);
+            fetchMeals(user.id);
         }
-        fetchData();
     }, []);
+
+    const fetchProgress = async (userId) => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:5000/api/users/progress`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            const { level, xp, xpForNextLevel } = response.data;
+            setLevel(level);
+            setXp(xp);
+            setXpForNextLevel(xpForNextLevel);
+        } catch (error) {
+            console.error('Error fetching progress:', error);
+        }
+    };
+
+    const saveProgress = async (newLevel, newXp, newXpForNextLevel) => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.put(
+                `http://localhost:5000/api/users/progress`,
+                { level: newLevel, xp: newXp, xpForNextLevel: newXpForNextLevel },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+        } catch (error) {
+            console.error('Error saving progress:', error);
+        }
+    };
+
+    const gainXp = (amount) => {
+        let updatedXp = xp + amount;
+        let updatedLevel = level;
+        let updatedXpForNextLevel = xpForNextLevel;
+
+        while (updatedXp >= updatedXpForNextLevel) {
+            updatedXp -= updatedXpForNextLevel;
+            updatedLevel++;
+            updatedXpForNextLevel = Math.round(updatedXpForNextLevel * (1 + 2.134 / 100));
+        }
+
+        setLevel(updatedLevel);
+        setXp(updatedXp);
+        setXpForNextLevel(updatedXpForNextLevel);
+
+        saveProgress(updatedLevel, updatedXp, updatedXpForNextLevel);
+    };
+
+    const fetchMeals = async (userId) => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:5000/api/meals`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            setMeals(response.data);
+
+            const totalCalories = response.data.reduce((sum, meal) => sum + meal.calories, 0);
+            setCalories(totalCalories);
+        } catch (error) {
+            console.error('Error fetching meals:', error);
+        }
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setMealForm({
             ...mealForm,
-            [name]: value
+            [name]: value,
         });
     };
 
-    const handleAddMeal = (e) => {
+    const handleAddMeal = async (e) => {
         e.preventDefault();
         const mealCalories = parseInt(mealForm.calories, 10) || 0;
-
         const newMeal = {
             ...mealForm,
             calories: mealCalories,
-            protein: mealForm.protein || "0g",
-            carbs: mealForm.carbs || "0g",
-            fats: mealForm.fats || "0g"
+            protein: mealForm.protein || '0g',
+            carbohydrates: mealForm.carbohydrates || '0g',
+            fats: mealForm.fats || '0g',
         };
 
-        setMeals([...meals, newMeal]);
-        setCalories(calories + mealCalories);
-        setMealForm({ name: '', calories: '', protein: '', carbs: '', fats: '' });
-
-        gainXp(5);
+        try {
+            const token = localStorage.getItem('token');
+            const savedMealResponse = await addMeal({ ...newMeal, userId: loggedInUser.id }, token);
+            setMeals((prevMeals) => [...prevMeals, savedMealResponse.meal]);
+            setMealForm({ name: '', calories: '', protein: '', carbohydrates: '', fats: '' });
+            setCalories((prevCalories) => prevCalories + mealCalories);
+            gainXp(5);
+        } catch (error) {
+            console.error('Error adding meal:', error);
+        }
     };
 
     const incrementWater = () => {
@@ -64,46 +127,34 @@ function Dashboard() {
 
     const decrementWater = () => setWater(Math.max(0, water - 1));
 
-    const gainXp = (amount) => {
-        const newXp = xp + amount;
-        if (newXp >= xpForNextLevel) {
-            setLevel(level + 1);
-            setXp(newXp - xpForNextLevel);
-            setXpForNextLevel(Math.round(xpForNextLevel * 1.5));
-        } else {
-            setXp(newXp);
-        }
-    };
-
     return (
         <div style={{ textAlign: 'center' }}>
             <h2>Dashboard</h2>
+            {loggedInUser ? (
+                <h3>Welcome, {loggedInUser.name}!</h3>
+            ) : (
+                <h3>Please log in</h3>
+            )}
 
-            <h3>User List:</h3>
-            <ul>
-                {users.map((user) => (
-                    <div key={user.id}>{user.name}</div>
-                ))}
-            </ul>
-
-            {/* Level and XP Progress Bar */}
             <div style={{ marginTop: '20px' }}>
                 <h3>Level System</h3>
                 <p>Level: {level}</p>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <div style={{ 
-                        width: '200px', 
-                        border: '1px solid #333', 
-                        borderRadius: '5px', 
-                        background: '#eee', 
-                        marginBottom: '5px' 
-                    }}>
+                    <div
+                        style={{
+                            width: '200px',
+                            border: '1px solid #333',
+                            borderRadius: '5px',
+                            background: '#eee',
+                            marginBottom: '5px',
+                        }}
+                    >
                         <div
                             style={{
                                 width: `${(xp / xpForNextLevel) * 100}%`,
                                 height: '20px',
                                 backgroundColor: '#4caf50',
-                                borderRadius: '5px'
+                                borderRadius: '5px',
                             }}
                         ></div>
                     </div>
@@ -167,8 +218,8 @@ function Dashboard() {
                                 Carbohydrates:
                                 <input
                                     type="text"
-                                    name="carbs"
-                                    value={mealForm.carbs}
+                                    name="carbohydrates"
+                                    value={mealForm.carbohydrates}
                                     onChange={handleInputChange}
                                     placeholder="e.g., 20g"
                                 />
@@ -196,7 +247,7 @@ function Dashboard() {
                                 <strong>{meal.name}</strong> - {meal.calories} kcal
                                 <ul>
                                     <div>Protein: {meal.protein}</div>
-                                    <div>Carbs: {meal.carbs}</div>
+                                    <div>Carbohydrates: {meal.carbohydrates}</div>
                                     <div>Fats: {meal.fats}</div>
                                 </ul>
                             </div>

@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
-import UserProfile from './pages/UserProfile';
+import ProfilePage from './pages/ProfilePage';
 import HealthStats from './pages/HealthStats';
-import { getUsers } from './services/userService';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
-    const [, setUsers] = useState([]); // Replace `const [users, setUsers]` with `const [, setUsers]` if `users` is unused
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const userData = await getUsers();
-                setUsers(userData);
-            } catch (error) {
-                console.error("Error fetching users:", error);
-            }
-        }
-        fetchData();
-    }, []);
-
     return (
         <Router>
             <div className="App">
@@ -29,13 +16,17 @@ function App() {
                 <nav>
                     <Link to="/">Dashboard</Link> | 
                     <Link to="/profile">User Profile</Link> | 
-                    <Link to="/stats">Health Stats</Link>
+                    <Link to="/stats">Health Stats</Link> | 
+                    <Link to="/login">Login</Link> | 
+                    <Link to="/register">Register</Link>
                 </nav>
                 
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/profile" element={<UserProfile />} />
+                    <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/stats" element={<HealthStats />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </div>
         </Router>
