@@ -5,7 +5,6 @@ import axios from 'axios';
 function Dashboard() {
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [calories, setCalories] = useState(0);
-    const [water, setWater] = useState(0);
     const [meals, setMeals] = useState([]);
     const [mealForm, setMealForm] = useState({
         name: '',
@@ -18,6 +17,8 @@ function Dashboard() {
     const [level, setLevel] = useState(1);
     const [xp, setXp] = useState(0);
     const [xpForNextLevel, setXpForNextLevel] = useState(20);
+    const [streak, setStreak] = useState(0);
+
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -28,7 +29,23 @@ function Dashboard() {
         }
     }, []);
 
-    const fetchProgress = async (userId) => {
+    useEffect(() => {
+        const fetchStreak = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:5000/api/users/profile', {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                setStreak(response.data.streak);
+            } catch (error) {
+                console.error('Error fetching streak:', error.message);
+            }
+        };
+
+        fetchStreak();
+    }, []);
+
+    const fetchProgress = async () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.get(`http://localhost:5000/api/users/progress`, {
@@ -41,37 +58,6 @@ function Dashboard() {
         } catch (error) {
             console.error('Error fetching progress:', error);
         }
-    };
-
-    const saveProgress = async (newLevel, newXp, newXpForNextLevel) => {
-        try {
-            const token = localStorage.getItem('token');
-            await axios.put(
-                `http://localhost:5000/api/users/progress`,
-                { level: newLevel, xp: newXp, xpForNextLevel: newXpForNextLevel },
-                { headers: { Authorization: `Bearer ${token}` } }
-            );
-        } catch (error) {
-            console.error('Error saving progress:', error);
-        }
-    };
-
-    const gainXp = (amount) => {
-        let updatedXp = xp + amount;
-        let updatedLevel = level;
-        let updatedXpForNextLevel = xpForNextLevel;
-
-        while (updatedXp >= updatedXpForNextLevel) {
-            updatedXp -= updatedXpForNextLevel;
-            updatedLevel++;
-            updatedXpForNextLevel = Math.round(updatedXpForNextLevel * (1 + 2.134 / 100));
-        }
-
-        setLevel(updatedLevel);
-        setXp(updatedXp);
-        setXpForNextLevel(updatedXpForNextLevel);
-
-        saveProgress(updatedLevel, updatedXp, updatedXpForNextLevel);
     };
 
     const fetchMeals = async (userId) => {
@@ -114,18 +100,10 @@ function Dashboard() {
             setMeals((prevMeals) => [...prevMeals, savedMealResponse.meal]);
             setMealForm({ name: '', calories: '', protein: '', carbohydrates: '', fats: '' });
             setCalories((prevCalories) => prevCalories + mealCalories);
-            gainXp(5);
         } catch (error) {
             console.error('Error adding meal:', error);
         }
     };
-
-    const incrementWater = () => {
-        setWater(water + 1);
-        gainXp(2);
-    };
-
-    const decrementWater = () => setWater(Math.max(0, water - 1));
 
     return (
         <div style={{ textAlign: 'center' }}>
@@ -135,6 +113,27 @@ function Dashboard() {
             ) : (
                 <h3>Please log in</h3>
             )}
+            
+            
+            <div>
+                <h2>Dashboard</h2>
+                <p style={{ fontSize: '24px', color: 'orange' }}>
+                    🔥 Streak: <span style={{ fontWeight: 'bold' }}>{streak} days</span>
+                </p>
+            </div>
+
+            <div style={{ width: '200px', border: '1px solid #ddd', borderRadius: '5px', margin: '10px auto' }}>
+                <div
+                style={{
+                    width: `${(streak % 7) * 14.28}%`, // Progress for each week
+                    backgroundColor: 'green',
+                    height: '10px',
+                    borderRadius: '5px',
+                }}
+                ></div>
+            </div>
+
+
 
             <div style={{ marginTop: '20px' }}>
                 <h3>Level System</h3>
@@ -166,12 +165,6 @@ function Dashboard() {
                 <h3>Trackers</h3>
                 <div>
                     <h4>Total Calories: {calories}</h4>
-                </div>
-
-                <div>
-                    <h4>Water: {water} glasses</h4>
-                    <button onClick={incrementWater}>+</button>
-                    <button onClick={decrementWater}>-</button>
                 </div>
 
                 <div style={{ marginTop: '20px' }}>

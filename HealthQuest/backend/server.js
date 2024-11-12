@@ -7,6 +7,13 @@ const userRoutes = require('./src/routes/userRoutes');
 const mealRoutes = require('./src/routes/mealRoutes');
 const progressRoutes = require('./src/routes/progressRoutes');
 const profileRoutes = require('./src/routes/profileRoutes');
+const hydrationRoutes = require('./src/routes/hydrationRoutes');
+const stepsRoutes = require('./src/routes/stepsRoutes');
+const verifyToken = require('./src/middleware/authMiddleware');
+const updateStreakMiddleware = require('./src/middleware/streakMiddleware');
+const secureRoutes = require('./src/routes/secureRoutes');
+
+
 
 dotenv.config();
 connectDB();
@@ -15,11 +22,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-
 app.use('/api/users', userRoutes);
 app.use('/api/meals', mealRoutes);
 app.use('/api/users', progressRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/hydration', hydrationRoutes);
+app.use('/api/steps', stepsRoutes);
+app.use('/api/secure-routes', verifyToken, updateStreakMiddleware, secureRoutes);
+
+
 
 app.get('/', (req, res) => res.send('Welcome to the HealthQuest Backend API'));
 

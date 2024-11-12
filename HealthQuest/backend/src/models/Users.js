@@ -13,7 +13,9 @@ const userSchema = new mongoose.Schema({
     goals: {
         calories: { type: Number, default: 2000 },
         hydration: { type: Number, default: 8 },
-    },
+    },   
+    streak: { type: Number, default: 0 },
+    lastLoginDate: { type: String, default: null },
 });
 
 // Password hashing middleware

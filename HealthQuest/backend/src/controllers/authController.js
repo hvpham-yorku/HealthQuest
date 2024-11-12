@@ -33,14 +33,15 @@ const loginUser = async (req, res) => {
 
     try {
         const user = await User.findOne({ email });
-        if (!user) return res.status(404).json({ message: 'User not found' });
+        if (!user) {
+            console.log('User not found:', email);
+            return res.status(404).json({ message: 'User not found' });
+        }
 
-        console.log('User found:', user); // Debugging
-        console.log('Plain text password provided:', password); // Debugging
-        console.log('Hashed password from DB:', user.password); // Debugging
+        console.log('User found:', user);
 
         const isMatch = await bcrypt.compare(password, user.password);
-        console.log('Password match result:', isMatch); // Debugging
+        console.log('Password match result:', isMatch);
 
         if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
 
@@ -53,12 +54,13 @@ const loginUser = async (req, res) => {
         res.status(200).json({
             message: 'Login successful',
             token,
-            user: { id: user._id, name: user.name, email: user.email }
+            user: { id: user._id, name: user.name, email: user.email },
         });
     } catch (error) {
         console.error('Error during login:', error.message);
         res.status(500).json({ message: 'Server error', error: error.message });
     }
 };
+
 
 module.exports = { registerUser, loginUser };

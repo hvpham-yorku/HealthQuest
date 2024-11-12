@@ -1,7 +1,6 @@
 const Meal = require('../models/Meal');
 
 // Add meal
-// Add meal
 const addMeal = async (req, res) => {
     try {
         const { name, calories, protein, carbohydrates, fats } = req.body; // Ensure "carbohydrates" is used here
