@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/add', verifyToken, async (req, res) => {
     const { userId } = req;
     const { steps } = req.body;
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Toronto' });
 
     try {
         let stepRecord = await Steps.findOne({ userId, date: today });
