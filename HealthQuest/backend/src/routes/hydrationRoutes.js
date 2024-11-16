@@ -4,7 +4,42 @@ const Hydration = require('../models/Water');
 
 const router = express.Router();
 
-// Add cups for today's hydration
+/**
+ * @swagger
+ * /api/hydration/add:
+ *   post:
+ *     summary: Add cups of water to today's hydration record
+ *     tags: [Hydration]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               cups:
+ *                 type: number
+ *                 description: Number of cups to add
+ *                 example: 2
+ *     responses:
+ *       200:
+ *         description: Hydration record updated
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 userId:
+ *                   type: string
+ *                 date:
+ *                   type: string
+ *                 cupsConsumed:
+ *                   type: number
+ *       500:
+ *         description: Error updating hydration
+ */
 router.post('/add', verifyToken, async (req, res) => {
     const { userId } = req;
     const { cups } = req.body;
@@ -26,7 +61,41 @@ router.post('/add', verifyToken, async (req, res) => {
     }
 });
 
-// Get hydration history
+/**
+ * @swagger
+ * /api/hydration/history:
+ *   get:
+ *     summary: Get user's hydration history
+ *     tags: [Hydration]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Hydration history fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 today:
+ *                   type: object
+ *                   properties:
+ *                     date:
+ *                       type: string
+ *                     cupsConsumed:
+ *                       type: number
+ *                 history:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       date:
+ *                         type: string
+ *                       cupsConsumed:
+ *                         type: number
+ *       500:
+ *         description: Error fetching hydration history
+ */
 router.get('/history', verifyToken, async (req, res) => {
     const { userId } = req;
     const today = new Date().toISOString().split('T')[0];

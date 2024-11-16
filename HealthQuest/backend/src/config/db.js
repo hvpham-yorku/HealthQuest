@@ -1,6 +1,16 @@
-// src/config/db.js
+/**
+ * @fileoverview Database connection file for MongoDB.
+ * This file establishes a connection to the MongoDB database using Mongoose.
+ */
+
 const mongoose = require('mongoose');
 
+/**
+ * Connects to the MongoDB database.
+ * @async
+ * @function
+ * @returns {Promise<void>} Logs success or exits the process on failure.
+ */
 const connectDB = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_URI);

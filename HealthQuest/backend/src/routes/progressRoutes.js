@@ -1,9 +1,45 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Progress
+ *   description: User progress management
+ */
+
 const express = require('express');
 const router = express.Router(); // Initialize the router
 const User = require('../models/Users'); // Import User model
 const verifyToken = require('../middleware/authMiddleware'); // Import auth middleware
 
-// Fetch user progress
+/**
+ * @swagger
+ * /api/progress:
+ *   get:
+ *     summary: Fetch user progress
+ *     tags: [Progress]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Returns user progress
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 level:
+ *                   type: number
+ *                   description: User's current level
+ *                 xp:
+ *                   type: number
+ *                   description: Current XP of the user
+ *                 xpForNextLevel:
+ *                   type: number
+ *                   description: XP required to reach the next level
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Server error
+ */
 router.get('/progress', verifyToken, async (req, res) => {
     try {
         const user = await User.findById(req.userId); // Use req.userId
@@ -18,7 +54,46 @@ router.get('/progress', verifyToken, async (req, res) => {
     }
 });
 
-// Update user progress with automatic level handling
+/**
+ * @swagger
+ * /api/progress:
+ *   put:
+ *     summary: Update user progress
+ *     tags: [Progress]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               xp:
+ *                 type: number
+ *                 description: XP to add to the user's progress
+ *     responses:
+ *       200:
+ *         description: Updates user progress and returns updated values
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 level:
+ *                   type: number
+ *                   description: Updated user level
+ *                 xp:
+ *                   type: number
+ *                   description: Remaining XP after updates
+ *                 xpForNextLevel:
+ *                   type: number
+ *                   description: Updated XP required for the next level
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Server error
+ */
 router.put('/progress', verifyToken, async (req, res) => {
     const { xp } = req.body; // Only pass XP changes from frontend
     try {
