@@ -14,6 +14,7 @@ const updateStreakMiddleware = require('./src/middleware/streakMiddleware');
 const secureRoutes = require('./src/routes/secureRoutes');
 const statsRoutes = require('./src/routes/statsRoutes');
 const caloriesRoutes = require('./src/routes/caloriesRoutes');
+const { swaggerDocs, swaggerUi } = require('./src/config/swagger');
 
 
 dotenv.config();
@@ -32,6 +33,7 @@ app.use('/api/steps', stepsRoutes);
 app.use('/api/secure-routes', verifyToken, updateStreakMiddleware, secureRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/calories', caloriesRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 app.get('/', (req, res) => res.send('Welcome to the HealthQuest Backend API'));

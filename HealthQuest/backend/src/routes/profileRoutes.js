@@ -12,7 +12,38 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Get user profile
+/**
+ * @swagger
+ * /api/profile:
+ *   get:
+ *     summary: Get user profile
+ *     tags: [Profile]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: User profile fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 profilePicture:
+ *                   type: string
+ *                   description: URL of the profile picture
+ *                 bio:
+ *                   type: string
+ *                   description: User's bio
+ *                 goals:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                   description: List of user goals
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Error fetching profile
+ */
 router.get('/', verifyToken, async (req, res) => {
     try {
         const user = await User.findById(req.userId);
@@ -27,7 +58,55 @@ router.get('/', verifyToken, async (req, res) => {
     }
 });
 
-// Update user profile
+/**
+ * @swagger
+ * /api/profile:
+ *   put:
+ *     summary: Update user profile
+ *     tags: [Profile]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               profilePicture:
+ *                 type: string
+ *                 format: binary
+ *                 description: Profile picture file
+ *               bio:
+ *                 type: string
+ *                 description: User's bio
+ *               goals:
+ *                 type: string
+ *                 description: JSON string representing user goals
+ *     responses:
+ *       200:
+ *         description: Profile updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 profilePicture:
+ *                   type: string
+ *                   description: URL of the updated profile picture
+ *                 bio:
+ *                   type: string
+ *                   description: Updated bio
+ *                 goals:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                   description: Updated list of goals
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Error updating profile
+ */
 router.put('/', verifyToken, upload.single('profilePicture'), async (req, res) => {
     const { bio, goals } = req.body;
     const updateData = { bio, goals: JSON.parse(goals) };

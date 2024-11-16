@@ -3,6 +3,47 @@ const router = express.Router();
 const verifyToken = require('../middleware/authMiddleware');
 const Calories = require('../models/Calories');
 
+/**
+ * @swagger
+ * /api/calories/log:
+ *   post:
+ *     summary: Log or update calories burned for a specific date
+ *     tags: [Calories]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               date:
+ *                 type: string
+ *                 description: Date in 'YYYY-MM-DD' format
+ *                 example: "2024-11-16"
+ *               caloriesBurned:
+ *                 type: number
+ *                 description: Calories burned for the date
+ *                 example: 500
+ *     responses:
+ *       200:
+ *         description: Successfully logged or updated calories
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Calories logged successfully"
+ *       400:
+ *         description: Bad request, invalid input data
+ *       401:
+ *         description: Unauthorized, missing or invalid token
+ *       500:
+ *         description: Internal server error
+ */
 router.post('/log', verifyToken, async (req, res) => {
     const { date, caloriesBurned } = req.body;
 
