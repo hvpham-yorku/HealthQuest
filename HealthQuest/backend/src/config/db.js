@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 /**
- * Connect to the DB, log whether the connection has been successfuly made.
+ * Connect to the DB and log whether the connection has been successfully established.
  */
 const connectDB = async () => {
     try {
