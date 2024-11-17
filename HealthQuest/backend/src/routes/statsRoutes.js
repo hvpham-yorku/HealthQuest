@@ -5,6 +5,9 @@ const Hydration = require('../models/Hydration');
 const Steps = require('../models/Steps');
 const Meal = require('../models/Meal');
 
+/**
+ * Maps data for statistics to a user.
+ */
 router.get('/', verifyToken, async (req, res) => {
     try {
         const userId = req.userId;
