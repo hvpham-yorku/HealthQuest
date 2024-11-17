@@ -1,5 +1,6 @@
 const User = require('../models/Users');
 
+// Middleware function for updating streaks
 const updateStreakMiddleware = async (req, res, next) => {
     try {
         const user = await User.findById(req.userId);
