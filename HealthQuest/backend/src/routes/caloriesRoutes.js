@@ -43,6 +43,7 @@ const Calories = require('../models/Calories');
  *         description: Unauthorized, missing or invalid token
  *       500:
  *         description: Internal server error
+ * Maps calories burned to a user.
  */
 router.post('/log', verifyToken, async (req, res) => {
     const { date, caloriesBurned } = req.body;

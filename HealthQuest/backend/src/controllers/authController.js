@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Login = require('../models/Login'); // Log login events
 
+// Controller for the authenticator to register a new user
 const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
     try {

@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+/**
+ * The model for a Meal.  Contains attributes such as userId, name, calories, protein, carbs, fats and the date.
+ */
 const mealSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     name: { type: String, required: true },

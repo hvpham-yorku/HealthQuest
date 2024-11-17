@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 
 // Calories.js
+
+/**
+ * The model for calories.
+ */
 const caloriesSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     date: { type: String, required: true },

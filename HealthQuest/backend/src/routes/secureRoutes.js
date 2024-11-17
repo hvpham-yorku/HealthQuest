@@ -22,6 +22,7 @@ const router = express.Router();
  *               type: string
  *               example: Welcome to the secure routes
  */
+// Initializes the router connection
 router.get('/', (req, res) => {
     res.send('Welcome to the secure routes');
 });

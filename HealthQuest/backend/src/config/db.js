@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
  * @async
  * @function
  * @returns {Promise<void>} Logs success or exits the process on failure.
+ * Connect to the DB and log whether the connection has been successfully established.
  */
 const connectDB = async () => {
     try {

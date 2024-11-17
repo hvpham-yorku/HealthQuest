@@ -45,6 +45,7 @@ const Meal = require('../models/Meal');
  *                     type: string
  *       500:
  *         description: Failed to fetch stats
+ * Maps data for statistics to a user.
  */
 router.get('/', verifyToken, async (req, res) => {
     try {
