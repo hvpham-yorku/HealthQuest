@@ -3,9 +3,6 @@ const router = express.Router();
 const verifyToken = require('../middleware/authMiddleware');
 const Calories = require('../models/Calories');
 
-/**
- * Maps calories burned to a user.
- */
 router.post('/log', verifyToken, async (req, res) => {
     const { date, caloriesBurned } = req.body;
 
