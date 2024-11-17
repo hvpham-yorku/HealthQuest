@@ -136,5 +136,35 @@ Please ensure you have the following installed:
 
    - On your GitHub fork, switch to the branch you pushed.
    - Click "Compare & pull request" to create a PR. In the PR, provide an overview of your changes and their purpose.
+     
+---
+
+## Project Update
+
+We’ve made significant progress on the health tracking system, and here’s a detailed look at what’s been completed across the frontend, backend, and documentation:
+
+### Frontend Story
+- **Calorie Tracker UI**: A visual tracker for monitoring calorie progress.
+- **Meal Logging UI**: A searchable interface for logging meals with nutritional data.
+- **Water Tracker UI**: A visual tracker with reminders to help users stay hydrated.
+- **Step Tracker UI**: Tracks daily steps with adjustable goals.
+
+### Backend Story
+- **Calorie Tracking Storage**: Efficient storage and retrieval of calorie data.
+- **Meal Data Storage**: Reliable storage for meal logs with nutritional calculations.
+- **Water Intake Data**: Secure storage for water tracking with customizable goals.
+- **Step Tracking Data**: Efficient storage and retrieval of steps data.
+- **Secure Authentication**: User login with encrypted credentials for enhanced security.
+- **API & Route Setup**: API endpoints for all frontend UI elements and their routes.
+- **Efficient Data Management**: Improved handling of calorie, meal, water, and step tracking data.
+
+### Documentation Story
+To support developers, we’ve added detailed documentation covering:
+1. **Routes Documentation**: Information on all API endpoints and their usage.
+2. **Models Documentation**: Descriptions of how data is structured and stored.
+3. **Controllers Documentation**: Explanation of backend logic and features.
+
+You can find all documentation in the `/docs` folder. For a breakdown of tasks and subtasks, check out our Trello board, where everything is organized for easy tracking.
 
 ---
+
