@@ -167,4 +167,3 @@ To support developers, we’ve added detailed documentation covering:
 You can find all documentation in the `/docs` folder. For a breakdown of tasks and subtasks, check out our Trello board, where everything is organized for easy tracking.
 
 ---
-
