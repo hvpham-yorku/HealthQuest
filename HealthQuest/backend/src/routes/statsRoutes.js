@@ -1,3 +1,9 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Stats
+ *   description: User health statistics API
+ */
 const express = require('express');
 const router = express.Router();
 const verifyToken = require('../middleware/authMiddleware');
@@ -6,6 +12,39 @@ const Steps = require('../models/Steps');
 const Meal = require('../models/Meal');
 
 /**
+ * @swagger
+ * /api/stats:
+ *   get:
+ *     summary: Get user health statistics
+ *     tags: [Stats]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Successfully fetched user health statistics
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 hydration:
+ *                   type: array
+ *                   items:
+ *                     type: number
+ *                 steps:
+ *                   type: array
+ *                   items:
+ *                     type: number
+ *                 calories:
+ *                   type: array
+ *                   items:
+ *                     type: number
+ *                 dates:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *       500:
+ *         description: Failed to fetch stats
  * Maps data for statistics to a user.
  */
 router.get('/', verifyToken, async (req, res) => {
