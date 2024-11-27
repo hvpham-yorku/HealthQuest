@@ -1,0 +1,91 @@
+/* ProfilePage specific styles */
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f7f7f7; /* Light gray background */
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+
+.profile-page h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.profile-page form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Form will not exceed 600px width */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-page label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.profile-page input, .profile-page textarea {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+.profile-page input[type="file"] {
+    padding: 5px;
+}
+
+.profile-page button {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.profile-page button:hover {
+    background-color: #45a049;
+}
+
+.profile-page img {
+    margin-top: 10px;
+    border-radius: 50%;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.profile-page textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Add some responsiveness */
+@media (max-width: 768px) {
+    .profile-page form {
+        padding: 20px;
+    }
+
+    .profile-page h2 {
+        font-size: 28px;
+    }
+}

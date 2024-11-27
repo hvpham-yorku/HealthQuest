@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserProfile, updateUserProfile } from '../services/profileService';
+import './ProfilePage.css'; // Import the scoped CSS file
 
 const ProfilePage = () => {
     const [profile, setProfile] = useState({
@@ -73,7 +74,7 @@ const ProfilePage = () => {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div>
+        <div className="profile-page">
             <h2>User Profile</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -85,7 +86,6 @@ const ProfilePage = () => {
                         <img
                             src={profilePicturePreview}
                             alt="Preview"
-                            style={{ maxWidth: '100px', maxHeight: '100px' }}
                         />
                     )}
                 </div>
