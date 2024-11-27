@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { loginUser } from '../services/userService';
+import './Login.css'; // Import the scoped CSS file
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -36,16 +37,16 @@ const Login = () => {
     };
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div className="login-page">
             {user ? (
                 <>
                     <h2>Welcome, {user.name}!</h2>
-                    <button onClick={handleLogout}>Logout</button>
+                    <button className="logout-button" onClick={handleLogout}>Logout</button>
                 </>
             ) : (
                 <>
                     <h2>Login</h2>
-                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    {error && <p>{error}</p>}
                     <form onSubmit={handleSubmit}>
                         <div>
                             <label>Email:</label>
