@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './StepsTracker.css'; // Import the scoped CSS file
 
 const StepsTracker = () => {
     const [steps, setSteps] = useState(0);
@@ -49,18 +50,20 @@ const StepsTracker = () => {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <div className="steps-tracker-page">
             <h3>Steps Tracker</h3>
             <p>Today's Steps: {steps}</p>
-            <input
-                type="number"
-                value={stepsInput}
-                onChange={(e) => setStepsInput(e.target.value)}
-                placeholder="Enter steps"
-            />
-            <button onClick={handleAddSteps}>Add Steps</button>
+            <div>
+                <input
+                    type="number"
+                    value={stepsInput}
+                    onChange={(e) => setStepsInput(e.target.value)}
+                    placeholder="Enter steps"
+                />
+                <button onClick={handleAddSteps}>Add Steps</button>
+            </div>
 
-            <div style={{ marginTop: '20px' }}>
+            <div>
                 <h4>Steps History</h4>
                 <ul>
                     {stepsHistory.map((record) => (
