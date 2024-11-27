@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './Register.css'; // Import the scoped CSS file
 
 const Register = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -25,16 +26,34 @@ const Register = () => {
     };
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div className="register-page">
             <h2>Register</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p>{error}</p>}
             <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleInputChange} required />
-                <br />
-                <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
-                <br />
-                <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleInputChange} required />
-                <br />
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                />
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                />
                 <button type="submit">Register</button>
             </form>
         </div>
