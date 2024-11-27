@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './HydrationTracker.css'; // Import the scoped CSS file
 
 const HydrationTracker = () => {
     const [water, setWater] = useState(0);
@@ -50,7 +51,7 @@ const HydrationTracker = () => {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <div className="hydration-tracker-page">
             <h3>Hydration Tracker</h3>
             <p>Today's Water Intake: {water} cups</p>
             <button onClick={incrementWater}>Add 1 Cup</button>

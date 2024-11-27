@@ -1,0 +1,76 @@
+/* HydrationTracker specific styles */
+.hydration-tracker-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+
+.hydration-tracker-page h3 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.hydration-tracker-page p {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.hydration-tracker-page button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.hydration-tracker-page button:hover {
+    background-color: #45a049;
+}
+
+.hydration-tracker-page ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.hydration-tracker-page li {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.hydration-tracker-page li:last-child {
+    margin-bottom: 0;
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .hydration-tracker-page button {
+        width: 100%;
+        padding: 14px;
+    }
+
+    .hydration-tracker-page ul {
+        width: 100%;
+    }
+}
