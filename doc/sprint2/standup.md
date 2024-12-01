@@ -1,6 +1,6 @@
 # Sprint 2 Standup Summary
 
-## [Monday, November 23, 2024] - Sprint 2 Standup #1
+## [Saturday, November 23, 2024] - Sprint 2 Standup #1
 
 ### **Humza**
 - **Worked on:** 
@@ -52,7 +52,7 @@
 
 ---
 
-## [Wednesday, November 25, 2024] - Sprint 2 Standup #2
+## [Monday, November 25, 2024] - Sprint 2 Standup #2
 
 ### **Humza**
 - **Worked on:** 
@@ -103,7 +103,7 @@
 
 ---
 
-## [Friday, November 27, 2024] - Sprint 2 Standup #3
+## [Wednesday, November 27, 2024] - Sprint 2 Standup #3
 
 ### **Humza**
 - **Worked on:** 
