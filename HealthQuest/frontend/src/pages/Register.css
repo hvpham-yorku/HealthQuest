@@ -5,21 +5,32 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f7f7f7; /* Light gray background */
+    background-color: #f7f7f7; /* Light mode background */
     font-family: 'Roboto', sans-serif;
     padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .register-page {
+    background-color: #1a1a1a; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
 }
 
 .register-page h2 {
     font-size: 32px;
-    color: #333;
+    color: #333; /* Default text color */
     margin-bottom: 20px;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
+    transition: color 0.3s;
+}
+
+body.dark-mode .register-page h2 {
+    color: #f5f5f5; /* Light text for dark mode */
 }
 
 .register-page form {
-    background-color: #fff;
+    background-color: #fff; /* Light mode form background */
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -28,12 +39,23 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode .register-page form {
+    background-color: #333; /* Dark mode form background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .register-page label {
     font-size: 16px;
-    color: #333;
+    color: #333; /* Default text color */
     font-weight: 500;
+    transition: color 0.3s;
+}
+
+body.dark-mode .register-page label {
+    color: #e0e0e0; /* Light text for dark mode */
 }
 
 .register-page input {
@@ -44,7 +66,15 @@
     margin-top: 8px;
     width: 100%;
     box-sizing: border-box;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light mode input background */
+    color: #333; /* Default text color */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode .register-page input {
+    background-color: #444; /* Dark mode input background */
+    color: #e0e0e0; /* Text color for dark mode */
+    border-color: #555; /* Border color for dark mode */
 }
 
 .register-page button {
@@ -59,14 +89,27 @@
     margin-top: 20px;
 }
 
+body.dark-mode .register-page button {
+    background-color: #76ff03; /* Brighter green for dark mode */
+}
+
 .register-page button:hover {
     background-color: #45a049;
 }
 
+body.dark-mode .register-page button:hover {
+    background-color: #64dd17; /* Hover green for dark mode */
+}
+
 .register-page p {
-    color: red;
+    color: red; /* Error message color */
     font-size: 14px;
     margin-top: 10px;
+    transition: color 0.3s;
+}
+
+body.dark-mode .register-page p {
+    color: #ff6f61; /* Softer red for dark mode */
 }
 
 /* Add some responsiveness */

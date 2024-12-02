@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './StreakPage.css';
+import { useDarkMode } from '../context/DarkModeContext'; // Assuming DarkModeContext exists
 
 const StreakPage = () => {
     const [streak, setStreak] = useState(0);
     const [streakTitle, setStreakTitle] = useState('Newbie 🔰');
     const [loading, setLoading] = useState(true);
+    const { isDarkMode } = useDarkMode(); // Access dark mode state
 
     useEffect(() => {
         const fetchStreak = async () => {
@@ -35,23 +38,18 @@ const StreakPage = () => {
 
     return (
         <div
-            style={{
-                background: streak >= 100 ? 'linear-gradient(45deg, red, orange, yellow)' :
-                    streak >= 30 ? 'linear-gradient(45deg, blue, purple)' :
-                        streak >= 7 ? 'linear-gradient(45deg, green, teal)' :
-                            'linear-gradient(45deg, lightgray, white)',
-                animation: 'gradientAnimation 5s infinite alternate',
-                height: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: '#745',
-                fontFamily: 'Arial, sans-serif',
-            }}
+            className={`streak-page ${
+                streak >= 100
+                    ? 'legend'
+                    : streak >= 30
+                    ? 'trailblazer'
+                    : streak >= 7
+                    ? 'committed'
+                    : ''
+            } ${isDarkMode ? 'dark-mode' : ''}`} // Add dark mode class
         >
             <h1>🔥 Streak Tracker</h1>
-            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{streakTitle}</p>
+            <p className="streak-title">{streakTitle}</p>
             <p>Your Current Streak: <strong>{streak} days</strong></p>
         </div>
     );

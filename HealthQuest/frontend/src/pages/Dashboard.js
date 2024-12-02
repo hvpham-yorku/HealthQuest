@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { addMeal } from '../services/userService';
 import axios from 'axios';
 import './Dashboard.css'; // Import the CSS file
+import { useDarkMode } from '../context/DarkModeContext';
 
 function Dashboard() {
     const [loggedInUser, setLoggedInUser] = useState(null);
@@ -19,6 +20,8 @@ function Dashboard() {
     const [xp, setXp] = useState(0);
     const [xpForNextLevel, setXpForNextLevel] = useState(20);
     const [streak, setStreak] = useState(0);
+
+    const { isDarkMode } = useDarkMode();
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -45,7 +48,7 @@ function Dashboard() {
         fetchStreak();
     }, []);
 
-    const fetchProgress = async () => {
+    const fetchProgress = async (userId) => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.get(`http://localhost:5000/api/users/progress`, {
@@ -77,10 +80,10 @@ function Dashboard() {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setMealForm({
-            ...mealForm,
+        setMealForm((prevForm) => ({
+            ...prevForm,
             [name]: value,
-        });
+        }));
     };
 
     const handleAddMeal = async (e) => {
@@ -106,7 +109,7 @@ function Dashboard() {
     };
 
     return (
-        <div className="dashboard-container">
+        <div className={`dashboard-container ${isDarkMode ? 'dark' : ''}`}>
             {loggedInUser ? (
                 <h2 className="dashboard-title">Welcome, {loggedInUser.name}!</h2>
             ) : (
@@ -120,7 +123,10 @@ function Dashboard() {
                         <h3>🔥 Your Streak</h3>
                         <p>{streak} day(s)</p>
                         <div className="progress-bar">
-                            <div className="progress-fill" style={{ width: `${(streak % 7) * 14.28}%` }}></div>
+                            <div
+                                className="progress-fill"
+                                style={{ width: `${(streak % 7) * 14.28}%` }}
+                            ></div>
                         </div>
                     </div>
 
@@ -128,7 +134,10 @@ function Dashboard() {
                         <h3>Level and Progress</h3>
                         <p>Level: {level}</p>
                         <div className="progress-bar">
-                            <div className="progress-fill" style={{ width: `${(xp / xpForNextLevel) * 100}%` }}></div>
+                            <div
+                                className="progress-fill"
+                                style={{ width: `${(xp / xpForNextLevel) * 100}%` }}
+                            ></div>
                         </div>
                         <p>{xp}/{xpForNextLevel} XP</p>
                     </div>

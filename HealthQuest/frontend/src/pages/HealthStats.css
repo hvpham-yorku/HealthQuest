@@ -1,0 +1,64 @@
+.health-stats {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7; /* Light mode background */
+    color: #333; /* Default text color */
+    min-height: 100vh;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .health-stats {
+    background-color: #1a1a1a; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+.health-stats h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff; /* Light mode chart container */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .chart-container {
+    background-color: #333; /* Dark mode chart container */
+    color: #e0e0e0; /* Text color for dark mode */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.chart-container h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: inherit; /* Inherit color for dark mode support */
+}
+
+.line-chart {
+    width: 100%;
+    height: auto;
+}
+
+canvas {
+    background-color: transparent; /* Ensure transparency for dark mode */
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        width: 90%;
+    }
+
+    .health-stats h1 {
+        font-size: 28px;
+    }
+
+    .chart-container h3 {
+        font-size: 20px;
+    }
+}
