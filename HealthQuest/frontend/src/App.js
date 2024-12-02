@@ -27,6 +27,9 @@ function App() {
                     <Link to="/steps" className="nav-link">Steps</Link>
                     <Link to="/streaks" className="nav-link">Streaks</Link>
                     <DarkSwitch />
+                    <button onClick={DarkSwitch}>
+                        Dark Mode
+                    </button>
                 </nav>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
