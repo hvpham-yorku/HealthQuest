@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './StreakPage.css';
-import { useDarkMode } from '../context/DarkModeContext'; // Assuming DarkModeContext exists
+import { useDarkMode } from '../context/DarkModeContext';
 
 const StreakPage = () => {
     const [streak, setStreak] = useState(0);
     const [streakTitle, setStreakTitle] = useState('Newbie 🔰');
     const [loading, setLoading] = useState(true);
-    const { isDarkMode } = useDarkMode(); // Access dark mode state
+    const { isDarkMode } = useDarkMode(); 
 
     useEffect(() => {
         const fetchStreak = async () => {
