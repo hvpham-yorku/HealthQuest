@@ -1,0 +1,101 @@
+/* StreakPage specific styles */
+.streak-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #745; /* Default text color */
+    background: linear-gradient(45deg, lightgray, white); /* Default gradient */
+    animation: gradientAnimation 5s infinite alternate;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Gradient Backgrounds for Streak Tiers */
+body.dark-mode .streak-page {
+    background: linear-gradient(45deg, #2e2e2e, #1a1a1a); /* Dark mode default */
+    color: #e0e0e0;
+}
+
+.streak-page.legend {
+    background: linear-gradient(45deg, red, orange, yellow); /* Legend gradient */
+}
+
+body.dark-mode .streak-page.legend {
+    background: linear-gradient(45deg, #ff5722, #ff9800, #ffc107); /* Adjusted for dark mode */
+}
+
+.streak-page.trailblazer {
+    background: linear-gradient(45deg, blue, purple); /* Trailblazer gradient */
+}
+
+body.dark-mode .streak-page.trailblazer {
+    background: linear-gradient(45deg, #673ab7, #3f51b5); /* Adjusted for dark mode */
+}
+
+.streak-page.committed {
+    background: linear-gradient(45deg, green, teal); /* Committed gradient */
+}
+
+body.dark-mode .streak-page.committed {
+    background: linear-gradient(45deg, #4caf50, #009688); /* Adjusted for dark mode */
+}
+
+/* Title */
+.streak-page h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+body.dark-mode .streak-page h1 {
+    color: #61dafb; /* Bright accent color in dark mode */
+}
+
+/* Streak Title */
+.streak-page p.streak-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+body.dark-mode .streak-page p.streak-title {
+    color: #ffd700; /* Golden color for streak title in dark mode */
+}
+
+/* Current Streak */
+.streak-page p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+body.dark-mode .streak-page p {
+    color: #d3d3d3; /* Text color in dark mode */
+}
+
+/* Animation for Gradient */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .streak-page h1 {
+        font-size: 36px;
+    }
+
+    .streak-page p {
+        font-size: 20px;
+    }
+}

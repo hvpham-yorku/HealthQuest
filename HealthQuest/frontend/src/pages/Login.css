@@ -1,13 +1,18 @@
-/* Scoped styles for Login component */
 .login-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f7f7f7;
+    background-color: #f7f7f7; 
     font-family: 'Roboto', sans-serif;
     padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .login-page {
+    background-color: #1a1a1a; 
+    color: #e0e0e0;
 }
 
 .login-page h2 {
@@ -16,13 +21,23 @@
     margin-bottom: 20px;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
+    transition: color 0.3s;
+}
+
+body.dark-mode .login-page h2 {
+    color: #f5f5f5; 
 }
 
 .login-page p {
-    color: red;
+    color: red; 
     font-size: 16px;
     margin: 10px 0;
     font-weight: 500;
+    transition: color 0.3s;
+}
+
+body.dark-mode .login-page p {
+    color: #ff6f61; 
 }
 
 .login-page form {
@@ -32,20 +47,44 @@
     width: 100%;
     max-width: 400px;
     margin-top: 20px;
+    background-color: #fff; 
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode .login-page form {
+    background-color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .login-page label {
     font-size: 18px;
-    color: #333;
+    color: #333; 
     font-weight: 600;
+    transition: color 0.3s;
+}
+
+body.dark-mode .login-page label {
+    color: #e0e0e0; 
 }
 
 .login-page input {
     padding: 12px;
     font-size: 16px;
     border-radius: 8px;
-    border: 1px solid #ddd;
-    width: 100%;
+    border: px solid #ddd;
+    width: 95%;
+    background-color: #f9f9f9; 
+    color: #333; 
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode .login-page input {
+    background-color: #444; /* Dark mode input background */
+    color: #e0e0e0; /* Text color for dark mode */
+    border-color: #555; /* Border color for dark mode */
 }
 
 .login-page button {
@@ -59,8 +98,16 @@
     transition: background-color 0.3s ease;
 }
 
+body.dark-mode .login-page button {
+    background-color: #76ff03; /* Brighter green for dark mode */
+}
+
 .login-page button:hover {
     background-color: #45a049;
+}
+
+body.dark-mode .login-page button:hover {
+    background-color: #64dd17; /* Hover green for dark mode */
 }
 
 .login-page .logout-button {
@@ -75,8 +122,16 @@
     margin-top: 20px;
 }
 
+body.dark-mode .login-page .logout-button {
+    background-color: #d32f2f; /* Softer red for dark mode */
+}
+
 .login-page .logout-button:hover {
     background-color: #e53935;
+}
+
+body.dark-mode .login-page .logout-button:hover {
+    background-color: #c62828; /* Darker hover red for dark mode */
 }
 
 /* Add responsiveness for smaller screens */

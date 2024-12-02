@@ -1,14 +1,22 @@
 body {
     background-color: lightblue;
+    color: #333; 
 }
 
+body.dark-mode {
+    background-color: #1a1a1a; 
+    color: #e0e0e0; 
+}
 
 .dashboard-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     font-family: 'Roboto', sans-serif;
+    
 }
+
+
 
 .dashboard-title {
     text-align: center;
@@ -20,6 +28,10 @@ body {
     position: relative;
 }
 
+body.dark-mode .dashboard-title {
+    color: #b1d431;
+}
+
 /* Divider Line Below the Title */
 .dashboard-title::after {
     content: '';
@@ -29,6 +41,11 @@ body {
     width: 100%;
     height: 2px;
     background-color: black; /* Green line or any color you prefer */
+}
+
+
+body.dark-mode .dashboard-title::after {
+    background-color: #61dafb; /* Accent color in dark mode */
 }
 
 
@@ -55,10 +72,25 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.dashboard-section.body {
+    background-color: #ffd8d8; /* Softer dark background */
+    color: #f10000; /* Softer text color */
+    border-color: #444; /* Border color in dark mode */
+}
+
 .dashboard-section h3 {
     font-size: 22px;
     font-family: 'Playfair Display', serif;
     color: #333;
+}
+
+body.dark-mode .dashboard-section h3 {
+    color: #ad5151;
+}
+
+body.dark-mode .dashboard-section {
+    background-color: #444; /* Slightly lighter dark background */
+    color: #0077ff; /* Softer text color */
 }
 
 .progress-bar {
@@ -69,17 +101,30 @@ body {
     overflow: hidden;
 }
 
+body.dark-mode .progress-bar {
+    background-color: #555; /* Dark mode for progress bar */
+}
+
 .progress-fill {
     background-color: #4caf50;
     height: 100%;
     transition: width 0.3s ease;
 }
 
+body.dark-mode .progress-fill {
+    background-color: #76ff03; /* Brighter green in dark mode */
+}
+
 .meal-tracker {
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(90, 23, 23, 0.1);
+}
+
+body.dark-mode .meal-tracker {
+    background-color: #444; /* Slightly lighter dark background */
+    color: #e0e0e0; /* Softer text color */
 }
 
 .meal-form {
@@ -93,6 +138,13 @@ body {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 8px;
+}
+
+
+body.dark-mode .meal-form input {
+    background-color: #555; /* Input background for dark mode */
+    border-color: #777; /* Input border for dark mode */
+    color: #e0e0e0; /* Text color for dark mode */
 }
 
 .meal-form button {
@@ -111,10 +163,15 @@ body {
     background-color: #45a049;
 }
 
+body.dark-mode .meal-form button {
+    background-color: #76ff03; /* Brighter green for dark mode */
+}
+
 .meal-list {
     list-style: none;
     padding: 0;
 }
+
 
 .meal-item {
     margin-bottom: 15px;
@@ -124,6 +181,13 @@ body {
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+body.dark-mode .meal-item {
+    background-color: #5f4e4e;
+    border-color: #555;
+    color: #e0e0e0; 
+}
+
 
 .meal-header {
     display: flex;
@@ -158,4 +222,22 @@ body {
     background-color: #f9f9f9;
     border-radius: 6px;
     border: 1px solid #eee;
+}
+
+.navbar {
+    background-color: #333; /* Dark navbar background */
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .navbar {
+    background-color: #444; /* Slightly lighter for better contrast */
+}
+
+.nav-link {
+    color: #ddd; /* Light color for navbar links */
+    transition: color 0.3s;
+}
+
+body.dark-mode .nav-link {
+    color: #61dafb; /* Accent color in dark mode */
 }

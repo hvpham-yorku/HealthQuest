@@ -10,6 +10,8 @@ import {
     Legend,
 } from 'chart.js';
 import axios from 'axios';
+import './HealthStats.css';
+import { useDarkMode } from '../context/DarkModeContext';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -18,6 +20,7 @@ const HealthStats = () => {
     const [stepsData, setStepsData] = useState([]);
     const [caloriesData, setCaloriesData] = useState([]);
     const [labels, setLabels] = useState([]);
+    const { isDarkMode } = useDarkMode();
 
     useEffect(() => {
         const fetchStats = async () => {
@@ -55,17 +58,17 @@ const HealthStats = () => {
     });
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div className={`health-stats ${isDarkMode ? 'dark' : ''}`}>
             <h1>Health Stats</h1>
-            <div style={{ width: '80%', margin: '0 auto' }}>
+            <div className="chart-container">
                 <h3>Hydration Over Time</h3>
                 <Line data={createChartData(hydrationData, 'Cups of Water', 'blue')} />
             </div>
-            <div style={{ width: '80%', margin: '20px auto' }}>
+            <div className="chart-container">
                 <h3>Steps Over Time</h3>
                 <Line data={createChartData(stepsData, 'Steps', 'green')} />
             </div>
-            <div style={{ width: '80%', margin: '20px auto' }}>
+            <div className="chart-container">
                 <h3>Calories Over Time</h3>
                 <Line data={createChartData(caloriesData, 'Calories', 'red')} />
             </div>
