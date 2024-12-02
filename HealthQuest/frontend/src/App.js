@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import HydrationPage from './pages/HydrationPage';
 import StepsPage from './pages/StepsPage';
 import StreaksPage from './pages/StreakPage'; // Import StreaksPage
+import DarkSwitch from './components/Darkmode';
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Link to="/HydrationPage" className="nav-link">Hydration</Link>
                     <Link to="/steps" className="nav-link">Steps</Link>
                     <Link to="/streaks" className="nav-link">Streaks</Link>
+                    <DarkSwitch />
                 </nav>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
