@@ -19,17 +19,4 @@ export const updateUserProfile = async (profileData, token) => {
     return response.data;
 };
 
-export const fetchUserProfilePicture = async (token) => {
-    try {
-        const response = await axios.get('http://localhost:5000/api/profile/profilePicture', {
-            headers: { Authorization: `Bearer ${token}` },
-        });
-        return response.data;
-    }
 
-    finally {
-        var image = document.getElementById("image");
-        image.src = 'blank-pfp.jpg';
-        return image;
-    }
-};

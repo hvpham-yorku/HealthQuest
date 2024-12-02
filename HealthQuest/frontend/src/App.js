@@ -11,7 +11,6 @@ import HydrationPage from './pages/HydrationPage';
 import StepsPage from './pages/StepsPage';
 import StreaksPage from './pages/StreakPage'; // Import StreaksPage
 import { DarkModeProvider } from './context/DarkModeContext';
-import { fetchUserProfilePicture } from './services/profileService';
 
 function App() {
     return (
@@ -20,7 +19,6 @@ function App() {
                 <div className="App">
                     <Header />
                     <nav className="navbar">
-                        <img style={{width: "40px", height: "40px"}} src={fetchUserProfilePicture} alt="userImg"/>
                         <Link to="/" className="nav-link">Dashboard</Link>
                         <Link to="/profile" className="nav-link">User Profile</Link>
                         <Link to="/stats" className="nav-link">Health Stats</Link>
