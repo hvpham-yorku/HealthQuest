@@ -159,7 +159,7 @@ We’ve made significant progress on the health tracking system, and here’s a 
 - **Efficient Data Management**: Improved handling of calorie, meal, water, and step tracking data.
 
 ### Documentation Story
-To support developers, we’ve added detailed documentation covering:
+To support developers, we have added detailed documentation covering:
 1. **Routes Documentation**: Information on all API endpoints and their usage.
 2. **Models Documentation**: Descriptions of how data is structured and stored.
 3. **Controllers Documentation**: Explanation of backend logic and features.
