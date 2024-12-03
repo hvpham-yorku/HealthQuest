@@ -198,7 +198,7 @@ The goal of Sprint 2 is to build upon the foundational framework established in 
    - **Assignee**: Abrar  
    - **Estimate**: 2 hours
 
-11. **User Profile Update API**  
+11. **User Profile API Update**  
    - **Description**: Implement API to update user profile data including bio and goals.
    - **Tasks**:  
      - Design user profile update functionality
