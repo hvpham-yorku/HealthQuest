@@ -169,8 +169,67 @@ The goal of Sprint 2 is to build upon the foundational framework established in 
      - Design MongoDB schema for meal data  
      - Design MongoDB schema for water intake  
    - **Assignee**: Abrar  
-   - **Estimate**: 5 hours  
+   - **Estimate**: 5 hours
 
+8. **Authentication and Authorization**  
+   - **Description**: Secure endpoints for user authentication and authorization. 
+   - **Tasks**:  
+     - Implement JWT token-based authentication
+     - Secure routes with authentication middleware  
+     - Validate user token for profile updates
+   - **Assignee**: Abrar  
+   - **Estimate**: 3 hours  
+
+9. **Database Integration for User Data**  
+   - **Description**: Set up database schemas and integrate MongoDB for user data storage. 
+   - **Tasks**:  
+     - Design user data schema (profile, bio, goals)
+     - Implementation CRUD operations for user data
+     - Integrate MongoDB with the backend for storing and retreiving data
+   - **Assignee**: Abrar  
+   - **Estimate**: 4 hours
+
+10. **Profile Picture Upload Storage**  
+   - **Description**: Handle profile picture upload and retrieval for user profiles.
+   - **Tasks**:  
+     - Design storage for profile pictures
+     - Implement image upload functionality using multer
+     - Develop profile picture retrieval API endpoint
+   - **Assignee**: Abrar  
+   - **Estimate**: 2 hours
+
+11. **User Profile Update API**  
+   - **Description**: Implement API to update user profile data including bio and goals.
+   - **Tasks**:  
+     - Design user profile update functionality
+     - Implement bio and goal update functionality
+     - Develop API endpoint for updating user profile data
+   - **Assignee**: Abrar  
+   - **Estimate**: 2 hours
+
+12. **Image Preview and File Validation**  
+   - **Description**: Implement functionality to show image preview before uploading and validate file types.
+   - **Tasks**:  
+     - Add image preview functionality in frontend
+     - Validate file type (only images) on file upload
+   - **Assignee**: Abrar  
+   - **Estimate**: 1 hours
+
+13. **Profile Data Validation**  
+   - **Description**: Ensure user profile data is validatedd before updating in the database.
+   - **Tasks**:  
+     - Add validation checks for bio and goals fields
+     - Implement error handling for invalid data
+   - **Assignee**: Abrar  
+   - **Estimate**: 1 hours
+
+14. **MongoDB Integration for Profile Data**  
+   - **Description**: Set up MongoDB database integration for storing profile information.
+   - **Tasks**:  
+     - Design MongoDB schema for user profiles
+     - Implement database queries for fetching and updating user profiles
+   - **Assignee**: Abrar  
+   - **Estimate**: 2 hours
 ---
 
 ### **Documentation Stories**
