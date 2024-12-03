@@ -257,6 +257,11 @@ The goal of Sprint 2 is to build upon the foundational framework established in 
    - **Assignees**: Aditya and Prabhjyot  
    - **Estimate**: 2 hours (1 hour each)  
 
+5 **README Documentation**  
+   - **Description**: Update README.md with Sprint 2 details  
+   - **Tasks**: Add Changes made in Sprint 2
+   - **Assignees**: Aditya and Prabhjyot  
+   - **Estimate**: 2 hours (1 hour each)  
 ---
 
 ## **Decisions and Notes**
