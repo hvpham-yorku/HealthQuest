@@ -21,11 +21,11 @@ The goal of Sprint 2 is to build upon the foundational framework established in 
 
 ## **Team Capacity**
 - **Abrar**: 10 hours/week  
-- **Humza**: 8 hours/week  
+- **Humza**: 6 hours/week  
 - **Luqmaan**: 6 hours/week  
 - **Aditya**: 6 hours/week  
 - **Prabhjyot**: 6 hours/week  
-- **Total Capacity**: 36 hours/week  
+- **Total Capacity**: 34 hours/week  
 
 ---
 
