@@ -216,7 +216,7 @@ The goal of Sprint 2 is to build upon the foundational framework established in 
    - **Estimate**: 1 hours
 
 13. **Profile Data Validation**  
-   - **Description**: Ensure user profile data is validatedd before updating in the database.
+   - **Description**: Ensure user profile data is validated before updating in the database.
    - **Tasks**:  
      - Add validation checks for bio and goals fields
      - Implement error handling for invalid data
