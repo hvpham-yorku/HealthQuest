@@ -43,7 +43,7 @@
 - **Worked on:** 
   - Wrapped up Sprint 1 documents, including sprint completion and user stories.
 - **Next Steps:** 
-  - Focus on the assigned user story.
+  - Will be focusing on the darkmode and user profile image user stories
   - Set up the burndown chart for Sprint 2.
 - **Estimated Completion:** User story by November 30; burndown chart after all tasks are completed.
 - **Blockers:** 
@@ -95,7 +95,7 @@
 - **Worked on:** 
   - Began basic implementation of the assigned user story (not yet pushed).
 - **Next Steps:** 
-  - Continue progress on the user story.
+  - Continue progress on the darkmode and user profile stories.
 - **Estimated Completion:** User story by November 30; burndown chart after task completion.
 - **Blockers:** 
   - External workload for the user story.
@@ -145,13 +145,11 @@
 
 ### **Luqmaan**
 - **Worked on:** 
-  - Continued progress on the assigned user story.
+  - Completed the darkmode and user profile stories, with some help from Abraar on darkmode
 - **Next Steps:** 
-  - Complete the user story.
   - Finalize the burndown chart once all tasks are done.
 - **Estimated Completion:** User story by November 30; burndown chart after task completion.
 - **Blockers:** 
-  - External workload for the user story.
   - Dependent on team progress for the burndown chart.
 
 ---
